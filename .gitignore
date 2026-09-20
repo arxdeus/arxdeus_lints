@@ -5,3 +5,8 @@
 # Avoid committing pubspec.lock for library packages; see
 # https://dart.dev/tools/pub/private-files#pubspec-lock.
 pubspec.lock
+
+# An override pointing this example at a local checkout is a development
+# convenience: the example depends on a published version because that is the
+# thing it demonstrates. CI writes one for itself, so it stays out of git.
+example/pubspec_overrides.yaml

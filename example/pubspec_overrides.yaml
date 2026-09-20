@@ -1,6 +1,0 @@
-# Redirects the version constraint above to the working tree, so the example
-# demonstrates the options as they stand here rather than the last published
-# release. Kept out of the archive by this package's .pubignore.
-dependency_overrides:
-  arxdeus_lints:
-    path: ../

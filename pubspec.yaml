@@ -16,4 +16,3 @@ topics:
 environment:
   sdk: ^3.13.2
 
-resolution: workspace
