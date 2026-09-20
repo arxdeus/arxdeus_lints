@@ -8,8 +8,6 @@ homepage: https://github.com/arxdeus/arxdeus_lints
 repository: https://github.com/arxdeus/arxdeus_lints
 issue_tracker: https://github.com/arxdeus/arxdeus_lints/issues
 
-# Ko-fi, mirrored by .github/FUNDING.yml which renders the Sponsor button on
-# GitHub. pub.dev turns this into a "Funding" link on the package page.
 funding:
   - https://ko-fi.com/arxdeus
 
@@ -21,4 +19,3 @@ topics:
 
 environment:
   sdk: ^3.13.2
-
