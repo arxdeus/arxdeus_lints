@@ -3,7 +3,7 @@ description: >-
   A strict, opinionated set of Dart and Flutter analysis options, adopted with
   one include line. Enables the three strict language modes and 212 lints.
   Ships no Dart code.
-version: 2.0.0
+version: 1.0.0
 repository: https://github.com/arxdeus/arxdeus_lints
 issue_tracker: https://github.com/arxdeus/arxdeus_lints/issues
 

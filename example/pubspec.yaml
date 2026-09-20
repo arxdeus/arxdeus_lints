@@ -7,4 +7,4 @@ environment:
   sdk: ^3.13.2
 
 dev_dependencies:
-  arxdeus_lints: ^2.0.0
+  arxdeus_lints: ^1.0.0
