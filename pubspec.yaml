@@ -1,11 +1,17 @@
 name: arxdeus_lints
 description: >-
-  The shared analysis options behind the disposito, checked_exceptions and
-  sensitive_exposure_lint analyzer plugins. Include the options from your own
-  analysis_options.yaml to adopt the same configuration.
+  A strict, opinionated set of Dart and Flutter analysis options, adopted with
+  one include line. Enables the three strict language modes and 212 lints.
+  Ships no Dart code.
 version: 2.0.0
 repository: https://github.com/arxdeus/arxdeus_lints
 issue_tracker: https://github.com/arxdeus/arxdeus_lints/issues
+
+topics:
+  - lints
+  - analysis
+  - linter
+  - static-analysis
 
 environment:
   sdk: ^3.13.2
