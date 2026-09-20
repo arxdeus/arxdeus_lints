@@ -12,7 +12,7 @@ what the analyzer reports, never what your program does.
 ```yaml
 # pubspec.yaml
 dev_dependencies:
-  arxdeus_lints: ^2.0.0
+  arxdeus_lints: ^1.0.0
 ```
 
 ```yaml
@@ -42,13 +42,13 @@ These are the modern replacements for the removed `implicit-casts` and
 `implicit-dynamic`, and they travel as a set: each one closes a different route
 by which `dynamic` re-enters a codebase that meant to be typed.
 
-**19 lints promoted to errors**, including `avoid_dynamic_calls`,
+**20 lints promoted to errors**, including `avoid_dynamic_calls`,
 `close_sinks`, `cancel_subscriptions`, `prefer_final_locals`,
 `always_declare_return_types` and `type_annotate_public_apis`. An error fails
 `dart analyze` with a non-zero exit code, so these cannot reach a merged branch
 through a CI job that only checks the exit status.
 
-**37 more promoted to warnings**, and roughly 215 lints enabled in total.
+**37 more promoted to warnings**, and 212 lints enabled in total.
 
 **Three lints that no `// ignore:` comment can silence:**
 
@@ -134,8 +134,17 @@ to code that currently analyses clean.
 
 ## Development
 
+The file this package ships is also the file this repository is analysed with,
+which keeps the two from drifting apart. To check a change to it:
+
 ```sh
+dart pub get
+dart analyze          # analyse this package under its own options
+cd example && dart pub get && dart analyze   # see what the options report
 ```
+
+The example's diagnostics are the point of the example, so `dart analyze`
+there is expected to report them rather than pass silently.
 
 ## License
 
