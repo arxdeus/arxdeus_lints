@@ -1,0 +1,10 @@
+name: arxdeus_lints_example
+description: Demonstrates adopting the shared arxdeus_lints analysis options.
+publish_to: none
+version: 1.0.0
+
+environment:
+  sdk: ^3.13.2
+
+dev_dependencies:
+  arxdeus_lints: ^2.0.0
