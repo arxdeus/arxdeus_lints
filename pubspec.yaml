@@ -6,6 +6,7 @@ description: >-
   to adopt the same configuration.
 version: 2.0.0
 repository: https://github.com/arxdeus/arxdeus_lints
+issue_tracker: https://github.com/arxdeus/arxdeus_lints/issues
 
 environment:
   sdk: ^3.13.2
