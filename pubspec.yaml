@@ -1,0 +1,13 @@
+name: arxdeus_lints
+description: >-
+  The shared analysis options used across the arxdeus_lints monorepo, which
+  publishes the disposito, checked_exceptions and sensitive_exposure_lint
+  analyzer plugins. Include the options from your own analysis_options.yaml
+  to adopt the same configuration.
+version: 2.0.0
+repository: https://github.com/arxdeus/arxdeus_lints
+
+environment:
+  sdk: ^3.13.2
+
+resolution: workspace

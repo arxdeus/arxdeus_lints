@@ -1,0 +1,7 @@
+# This package ships the very configuration it is checked with, which keeps
+# the shipped file and the one the repository uses from drifting apart.
+include: package:arxdeus_lints/analysis_options/recommended.yaml
+
+analyzer:
+  exclude:
+    - build/**
