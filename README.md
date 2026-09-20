@@ -132,6 +132,21 @@ to a stricter level, can fail a build that previously passed. Such changes are
 released as a major version. Patch and minor releases will not add diagnostics
 to code that currently analyses clean.
 
+## Development
+
+This package is developed inside the [`qol_lints`][ws] workspace, which checks
+it out as a submodule alongside its sibling packages. Its pubspec declares
+`resolution: workspace`, so a lone clone of *this* repository cannot resolve on
+its own: `dart pub get` needs the workspace root above it. Work on it there.
+
+```sh
+git clone --recurse-submodules https://github.com/arxdeus/qol_lints
+cd qol_lints && dart pub get
+cd packages/arxdeus_lints
+```
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+[ws]: https://github.com/arxdeus/qol_lints
