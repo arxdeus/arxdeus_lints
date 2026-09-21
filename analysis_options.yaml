@@ -5,3 +5,10 @@ include: package:arxdeus_lints/analysis_options/recommended.yaml
 analyzer:
   exclude:
     - build/**
+    # The example exists to be reported on: every line in it is flagged by the
+    # very options this package ships, which is the whole demonstration.
+    # Analysing it from here would mean this package could never be clean. It
+    # has its own analysis_options.yaml, includes these options against itself,
+    # and is covered by its own CI job: tool/verify_example.dart holds every
+    # diagnostic to the code its comment claims.
+    - example/**

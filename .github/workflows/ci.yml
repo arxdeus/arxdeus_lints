@@ -1,0 +1,78 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # This package ships no Dart code under `lib/`, only analysis options, so
+  # there is nothing here to test. What can regress is the options file itself:
+  # a key the analyzer no longer understands, or a lint it has removed, makes
+  # every project that includes this one fail to analyse.
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - run: dart pub get
+
+      - run: dart format --output=none --set-exit-if-changed .
+
+      - run: dart analyze --fatal-infos
+
+  # The example is the only place these options are applied the way a consumer
+  # applies them, through a one-line `include:`. It is what catches an option
+  # that silently stopped switching a diagnostic on.
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - run: dart pub get
+
+      # The example depends on this package by version, because resolving from
+      # pub.dev like a consumer's project is half of what it demonstrates. That
+      # is the wrong thing to check a pull request against: it would analyse the
+      # last release rather than this tree, and a change to the options file
+      # here could not fail this job. The override redirects it at the checkout
+      # for CI only, which is why it is git-ignored rather than committed.
+      - name: Point the example at this checkout
+        run: |
+          cat > example/pubspec_overrides.yaml <<'YAML'
+          dependency_overrides:
+            arxdeus_lints:
+              path: ../
+          YAML
+
+      - run: dart pub get
+        working-directory: example
+
+      # Not `dart analyze` here: every case in the example is flagged on
+      # purpose, so it reports by design and can never exit zero. What matters
+      # is that it reports exactly what its comments claim, which is a stronger
+      # check than a clean run.
+      - name: Verify the example reports what it documents
+        run: dart run tool/verify_example.dart
+
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - run: dart pub get
+
+      - run: dart pub publish --dry-run
